@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LogInActivity extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class LogInActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     EditText editText;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,30 +33,20 @@ public class LogInActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         /*sharedPreferences = getSharedPreferences("Food",
                 MODE_PRIVATE);*/
-
 
         button = findViewById(R.id.buttonClick);
         buttonShow = findViewById(R.id.buttonShow);
         editText = findViewById(R.id.edtLogIn);
+        textView = findViewById(R.id.textView_title);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-               // sharedPreferences.edit().putString("pin", editText.getText().toString()).commit();
-
                 AppSharedPreference.getDefaultPreferences().putString("pin", editText.getText().toString());
-
                 showToast(editText.getText().toString());
 
-                /*startActivity(new Intent(
-                        LogInActivity.this,
-                        SecondActivity.class));*/
-
-
-                //finish();
             }
         });
 
@@ -64,7 +56,6 @@ public class LogInActivity extends AppCompatActivity {
 
                 //String pin = sharedPreferences.getString("pin", "content not found.");
                 String pin = AppSharedPreference.getDefaultPreferences().getString("pin");
-
                 showToast(pin);
 
             }

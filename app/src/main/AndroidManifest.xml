@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sebpo.androidlifecycle">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application
         android:name=".FoodApplication"
         android:allowBackup="true"
@@ -29,6 +31,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sebpo.androidlifecycle.LogInActivity" />
         </activity>
+
+        <receiver android:name=".MyReceiver">
+
+            <intent-filter>
+
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <!--<action android:name="android.intent.action.QUICKBOOT_POWERON" />-->
+
+            </intent-filter>
+
+        </receiver>
+        <activity
+            android:name=".BroadCastTestActivity"
+            android:label="@string/title_activity_broad_cast_test"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
