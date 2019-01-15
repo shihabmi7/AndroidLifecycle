@@ -101,4 +101,14 @@ public class UIThreadActivity extends AppCompatActivity implements View.OnClickL
         });
     }
 
+    void widgetToLooper(){
+
+        textview_thread_number.post(new Runnable() {
+            @Override
+            public void run() {
+                textview_thread_number.setText("" + count);
+            }
+        });
+    }
+
 }
